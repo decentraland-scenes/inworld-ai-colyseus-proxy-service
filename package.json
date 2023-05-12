@@ -38,7 +38,7 @@
     "colyseus": "^0.14.23",
     "cors": "^2.8.5",
     "date-and-time": "^2.2.1",
-    "decentraland-crypto-fetch": "^1.0.3",
+    "decentraland-crypto-fetch": "^2.0.0",
     "express": "^4.17.3",
     "express-basic-auth": "^1.2.1",
     "playfab-sdk": "^2.95.220509",
