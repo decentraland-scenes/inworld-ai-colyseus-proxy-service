@@ -2,7 +2,7 @@ import { Schema, type, MapSchema, ArraySchema } from "@colyseus/schema";
 import { Character } from "@inworld/nodejs-sdk";
 import { NpcGameRoomState, NpcState } from "../npcChatState/server-state";
 import { CONFIG } from "../rooms/config";
-import * as serverStateSpec from "./server-state-spec";
+import * as serverStateSpec from "../npcChatState/server-state-spec";
 
 
 export class Quaternion3State extends Schema implements serverStateSpec.Quaternion3State {
@@ -404,9 +404,6 @@ export class LevelDataState extends Schema implements serverStateSpec.LevelDataS
   @type({ map: TrackFeatureState })
   trackFeatures = new MapSchema<TrackFeatureState>();
 
-  @type("number")
-  maxLaps: number //move to track data or is max laps race data?
-
   //trackPath: serverStateSpec.Vector3State[]
 
   copyFrom(retval: serverStateSpec.LevelDataState,now:number) {
@@ -450,7 +447,7 @@ export class LevelDataState extends Schema implements serverStateSpec.LevelDataS
       } 
     }
 
-    this.maxLaps = retval.maxLaps
+    //this.maxLaps = retval.maxLaps
     //this.trackPath = retval.trackPath
   }
 
@@ -458,7 +455,7 @@ export class LevelDataState extends Schema implements serverStateSpec.LevelDataS
     retval.id = this.id
     retval.name = this.name
     //retval.trackFeatures = this.trackFeatures
-    retval.maxLaps = this.maxLaps
+    //retval.maxLaps = this.maxLaps
     //retval.trackPath = this.trackPath
   }
 }
@@ -492,9 +489,6 @@ export class RobotsLobbyState extends Schema implements serverStateSpec.RobotsLo
 
   @type("number")
   serverTime: number = -1
-
-  @type("number")
-  maxLaps: number = CONFIG.RACE_MAX_LAPS_DEFAULT//FIXME - HARDCODED FOR NOW 
 
   savedPlayerStats:boolean = false
 

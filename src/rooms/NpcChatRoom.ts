@@ -286,7 +286,7 @@ export class NpcChatRoom extends Room<serverState.NpcGameRoomState> {
 
             // It should be like workspaces/{WORKSPACE_NAME}/characters/{CHARACTER_NAME}.
             // Or like workspaces/{WORKSPACE_NAME}/scenes/{SCENE_NAME}.
-            config.INWORLD_SCENE="workspaces/{WORKSPACE_NAME}/scenes/{SCENE_NAME}"
+            config.INWORLD_SCENE=CONFIG.NPC_ROOM_INWORLD_SCENE
         }
 
         log(CLASSNAME,this.roomName,this.roomId,undefined,undefined,METHOD_NAME,"config.INWORLD_SCENE",config.INWORLD_SCENE);

@@ -491,9 +491,6 @@ export class NpcState extends Schema implements serverStateSpec.NpcState {
   @type("number")
   serverTime: number = -1
 
-  @type("number")
-  maxLaps: number = CONFIG.RACE_MAX_LAPS_DEFAULT//FIXME - HARDCODED FOR NOW 
-
   savedPlayerStats:boolean = false
 
   constructor() {

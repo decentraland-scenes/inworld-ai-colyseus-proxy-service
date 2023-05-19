@@ -1,3 +1,84 @@
+
+export interface PlayerNpcDataState extends ClockState{
+    //move this to player race specific data???
+    worldPosition:Vector3State
+    //playerPosition:Vector3State //car location will scene center since it does not move
+    /*
+    closestProjectedPoint:Vector3State //is scene relative, but when used with closestSegmentID + track data can compute where
+    worldPosition:Vector3State
+    closestSegmentID:number
+    closestPointID:number
+  
+    closestSegmentPercent:number// relates to closestSegmentID.  what percent of this segement is player at
+    closestSegmentDistance:number //how far player is from center, aka the segement
+    
+    currentSpeed:number
+    */
+    worldMoveDirection:Quaternion3State//world moving direction
+    shootDirection:Quaternion3State //car forward direction
+    cameraDirection:Quaternion3State //turn angle
+    endTime:number //move this as wont change till the end
+    enrollTime: number//time joined
+    teamId:string//carModelId:string //move this as wont change much if at all?
+    //lapTimes //TODO ADD DEFINITION HERE!!!
+    racePosition:number 
+    
+    lastKnownServerTime:number
+    lastKnownClientTime:number
+  
+    //isDrifting: boolean
+    //currentSpeed : number
+  }
+  
+
+  export interface PlayerState{
+    id:string
+    sessionId:string
+  
+    connStatus:PlayerConnectionStatus
+    type:"combatant"|"spectator"
+    remoteClientCache:InWorldConnectionClientCacheState  
+  
+    userData:PlayerUserDataState
+    npcData:PlayerNpcDataState
+    buttons: PlayerButtonState
+  }
+  
+  
+  
+  export interface PlayerUserDataState{
+    name:string
+    userId:string
+    ///snapshotFace128:string snapshots deprecated use AvatarTexture
+  }
+  
+  export interface RobotsLobbyState extends ClockState{
+    id:string
+    name:string
+    status:NpcProxyStatus
+    startTime:number
+    timeLimit:number
+    endTime:number
+    endTimeActual:number
+  }
+  
+export interface NpcState extends ClockState{
+    id:string
+    name:string
+    status:NpcProxyStatus
+    startTime:number
+    timeLimit:number
+    endTime:number
+    endTimeActual:number
+  }
+  
+  export interface NpcGameRoomState{
+    players:Map<any,PlayerState>
+    npcState:NpcState
+    enrollment:EnrollmentState
+    levelData:LevelDataState
+  }
+
 export interface Vector3State{
   x:number
   y:number
@@ -85,7 +166,6 @@ export interface NpcState extends ClockState{
   timeLimit:number
   endTime:number
   endTimeActual:number
-  maxLaps:number //move to track data or is max laps race data?
 }
 
 //broadcast object instead of linking to state the level details
@@ -172,7 +252,6 @@ export class TrackFeaturePosition implements ITrackFeaturePosition{
 export interface NpcRoomDataOptions{
   levelId:string
   name?:string
-  maxLaps?:number
   maxPlayers?:number
   minPlayers?:number
   customRoomId?:string
@@ -188,10 +267,10 @@ export interface EnrollmentState extends ClockState{
   maxPlayers:number
 }
 
-
-export interface NpcGameRoomState{
+export interface LobbyGameRoomState{
   players:Map<any,PlayerState>
-  npcState:NpcState
+  lobbyState:RobotsLobbyState
+  npcState:NpcGameRoomState
   enrollment:EnrollmentState
   levelData:LevelDataState
 }

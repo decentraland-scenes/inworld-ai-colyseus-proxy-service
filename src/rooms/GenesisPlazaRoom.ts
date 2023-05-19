@@ -1,6 +1,6 @@
 import { Schema, type } from "@colyseus/schema";
 import { Client, LobbyRoom, Room } from "colyseus";
-import { LobbyGameRoomState, RobotsLobbyState } from "../robotsLobbyState/server-state";
+import { LobbyGameRoomState } from "../robotsLobbyState/server-state";
 import { NpcChatRoom, NpcChatRoomConfig } from "./NpcChatRoom";
 import { CONFIG } from "./config";
 import { ClientUserData } from "../client/client-spec";
@@ -55,7 +55,7 @@ export class GenesisPlazaRoom extends Room<LobbyGameRoomState> {//extends LobbyR
 
         // It should be like workspaces/{WORKSPACE_NAME}/characters/{CHARACTER_NAME}.
         // Or like workspaces/{WORKSPACE_NAME}/scenes/{SCENE_NAME}.
-        config.INWORLD_SCENE="workspaces/{WORKSPACE_NAME}/scenes/{SCENE_NAME}"
+        config.INWORLD_SCENE=CONFIG.GENESIS_CITY_NPC_ROOM_INWORLD_SCENE
     
         this.npcRoom.room = this
         //this.robotsGrid.room = this
