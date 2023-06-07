@@ -1,6 +1,6 @@
-# Welcome to InWorld.ai Colyseus Service! 
+# Welcome to Inworld AI Colyseus Service! 
 
-InWorld JS SDK is not compatible with DCL runtime (depends on too many things the Decentraland runtime does not have out of the box). This provides a workaround by acting as a proxy.  There are benefits to this approach such as the ability upgrade the SDK, bug fixing (to some extent) to optimize and the connection on the server instead of on the client.
+Inworld AI JS SDK is not compatible with DCL runtime (depends on too many things the Decentraland runtime does not have out of the box). This provides a workaround by acting as a proxy.  There are benefits to this approach such as the ability upgrade the SDK, bug fixing (to some extent) to optimize and the connection on the server instead of on the client.
 
 This project has been created using [⚔️ `create-colyseus-app`](https://github.com/colyseus/create-colyseus-app/) - an npm init template for kick starting a Colyseus project in TypeScript.
 
@@ -56,7 +56,7 @@ GENESIS_CITY_NPC_ROOM_INWORLD_SCENE=workspaces/{WORKSPACE_NAME}/scenes/{SCENE_NA
 ```
 
 `INWORLD_KEY` and `INWORLD_SECRET`
-Go to the InWorld.ai studio.  Under the Integrations section you will create a key and secret
+Go to the InWorld AI studio.  Under the Integrations section you will create a key and secret
 
 <img src='screenshots/intergrations.png'/>
 
@@ -69,7 +69,7 @@ Go to the InWorld.ai studio.  Under the Integrations section you will create a k
 
 - `index.ts`: main entry point, register an empty room handler and attach [`@colyseus/monitor`](https://github.com/colyseus/colyseus-monitor)
 - `src/rooms/MyRoom.ts`: an empty room handler for you to implement your logic
-- `src/rooms/schema/NpcChatRoom.ts`: is the room you that handles proxying requests to and from InWorld. 
+- `src/rooms/schema/NpcChatRoom.ts`: is the room you that handles proxying requests to and from Inworld AI. 
 - `src/rooms/schema/GenesisPlazaRoom.ts`: is the room you will connect to using a command pattern passing calls to NpcChatRoom.  This allows you to put other game logic in here and keep it encapsulated
 - `loadtest/example.ts`: scriptable client for the loadtest tool (see `npm run loadtest`)
 - `package.json`:
