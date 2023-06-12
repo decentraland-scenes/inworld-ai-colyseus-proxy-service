@@ -42,6 +42,9 @@ export class GenesisPlazaRoom extends Room<LobbyGameRoomState> {//extends LobbyR
 
         this.npcRoom = new NpcChatRoom()
         
+        //only clean up when this is cleaned up
+        this.npcRoom.autoDispose = false
+        
         //default fallback values
         
         const config = this.npcRoom.config = new NpcChatRoomConfig()
