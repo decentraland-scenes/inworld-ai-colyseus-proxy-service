@@ -44,6 +44,13 @@ export class GenesisPlazaRoom extends Room<LobbyGameRoomState> {//extends LobbyR
         
         //only clean up when this is cleaned up
         this.npcRoom.autoDispose = false
+
+        //disable the child room broadcasting, main room will handle it
+        //i think this was causing race conditions
+        this.npcRoom.broadcastPatch = () => {
+            //log(CLASSNAME, this.roomId, "this.delegateRoom.broadcastPatch", "OVERRIDEN/DISBABLED");
+            return false
+        }
         
         //default fallback values
         
